@@ -93,6 +93,40 @@ agent = PathwayExplorerAgent(database=db)
 response = agent.discoverer._run("List metabolic pathways")
 ```
 
+## Test Code
+
+The repository includes a test script `test_llm_discovery.py` that demonstrates the LLM-based pathway discovery functionality:
+
+```python
+# test_llm_discovery.py
+from pathway_explorer import PathwayExplorerAgent
+from pathway_explorer.database import PathwayDatabase
+
+def test_llm_pathways():
+    # Initialize database and agent
+    db = PathwayDatabase()
+    agent = PathwayExplorerAgent(database=db)
+    
+    # Use LLM to discover new pathways
+    response = agent.discoverer._run("List metabolic pathways")
+```
+
+This test script:
+1. Loads or creates a pathway database
+2. Uses LLM to discover new metabolic pathways
+3. Generates output in two locations:
+   - `llm_responses/`: Markdown files with timestamped LLM responses
+   - `data/`: JSON database of discovered pathways
+
+To run the test:
+```bash
+python test_llm_discovery.py
+```
+
+Requirements:
+- OpenAI API key in `.env` file
+- Required packages installed from `requirements.txt`
+
 ## Project Structure
 
 ```
